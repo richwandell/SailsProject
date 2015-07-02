@@ -34,8 +34,9 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
-
+  },
+  'GET /passenger/car/:id': 'PassengerController.car',
+  'GET /passenger/detail/:id': 'PassengerController.detail',
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

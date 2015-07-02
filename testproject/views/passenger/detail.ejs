@@ -1,0 +1,18 @@
+<ul class="nav nav-tabs">
+    <li role="presentation"><a href="/car/list">Cars</a></li>
+    <li role="presentation" class="active"><a href="#">Passengers</a></li>
+    <li role="presentation"><a href="/part/list">Car Parts</a></li>
+</ul>
+<ol class="breadcrumb">
+    <li><a href="/passenger/list">Passenger</a></li>
+    <li class="active">
+        <a href="/passenger/detail/<%- passenger.id %>">
+            <%- passenger.first_name + " " + passenger.last_name %>
+        </a>
+    </li>
+</ol>
+<div class="jumbotron">
+    <h1><%- passenger.first_name + " " + passenger.last_name %></h1>
+    <p><%- passenger.bio %></p>
+    <p><a class="btn btn-primary btn-lg" href="#" role="button">Edit Bio</a></p>
+</div>

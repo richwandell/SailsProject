@@ -1,0 +1,10 @@
+<td>
+    <form action="/car/addPassenger" method="POST" class="noshow">
+        <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+        <label for="passenger_name">Passenger Name</label>
+        <input type="text" name="passenger_first_name"/>
+        <input type="text" name="passenger_last_name"/>
+        <input type="hidden" name="passenger_car" value="<%- car.id %>"/>
+        <input type="submit" value="Add Passenger"/>
+    </form>
+</td>
