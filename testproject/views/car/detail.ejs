@@ -1,0 +1,20 @@
+<div class="page-header">
+    <h1>Sails.js Example App <small>by Rich Wandell</small></h1>
+</div>
+<ul class="nav nav-tabs">
+    <li role="presentation" class="active"><a href="/car/list">Cars</a></li>
+    <li role="presentation"><a href="/part/list">Parts</a></li>
+    <li role="presentation"><a href="/passenger/list">Passengers</a></li>
+</ul>
+<ol class="breadcrumb">
+    <li><a href="/car/list">Cars</a></li>
+    <li class="active">
+        <a href="/car/detail/<%- car.id %>">
+            <%- car.name %>
+        </a>
+    </li>
+</ol>
+<div class="jumbotron">
+    <h1><%- car.name %></h1>
+    <p><%- car.description %></p>
+</div>

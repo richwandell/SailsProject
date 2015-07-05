@@ -5,7 +5,7 @@ module.exports = {
    * @param res
    */
   list: function(req, res){
-    Passenger.find().populate('car').populate('family').exec(function(e, passengers){
+    Passenger.find().populate('car').exec(function(e, passengers){
       Car.find().exec(function(e, cars){
         res.view('passenger/list', {passengers: passengers, cars: cars});
       });
@@ -43,10 +43,10 @@ module.exports = {
         req.flash('message', 'Success! Added a passenger to this car');
         req.flash('last_name_entry', '');
         req.flash('first_name_entry', '');
-        res.redirect('/passenger/list');
+        res.redirect('back');
       }else{
         req.flash('error', 'Error!');
-        res.redirect('/passenger/list');
+        res.redirect('back');
       }
     });
   },
@@ -69,14 +69,12 @@ module.exports = {
   detail: function(req, res){
     var id = req.param("id");
     if(id){
-      Passenger.find({id: id}).populate('car').populate('family').exec(function(e, passenger){
-        console.log(passenger);
+      Passenger.find({id: id}).populate('car').exec(function(e, passenger){
         res.view('passenger/detail', {passenger: passenger[0]});
       });
     }else{
       req.flash('error', 'Missing passenger id');
       res.redirect('/passenger/list');
     }
-  },
-
+  }
 }

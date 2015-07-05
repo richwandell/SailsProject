@@ -1,5 +1,15 @@
 module.exports = {
   /**
+   * Route for displaying the list of car parts
+   * @param req
+   * @param res
+   */
+  list: function (req, res) {
+    Part.find().populate('car').exec(function(e, parts){
+      res.view('part/list', {parts: parts});
+    });
+  },
+  /**
    * An action for adding a new part from the add part form
    * @param req
    * @param res
@@ -36,6 +46,8 @@ module.exports = {
     }).exec(function (e, record) {
       if (!e) {
         req.flash('message', 'Success! Added a new car part');
+        req.flash('part_price_entry', '');
+        req.flash('part_name_entry', '');
       }
       else {
         req.flash('error', 'Error!');

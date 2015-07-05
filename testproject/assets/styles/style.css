@@ -8,3 +8,6 @@ body{
 #new_passenger{
     padding: 50px;
 }
+#part_list_total{
+    float: right;
+}

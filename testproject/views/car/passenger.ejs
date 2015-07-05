@@ -3,9 +3,8 @@
 </div>
 <ul class="nav nav-tabs">
     <li role="presentation" class="active"><a href="/car/list">Cars</a></li>
+    <li role="presentation"><a href="/part/list">Parts</a></li>
     <li role="presentation"><a href="/passenger/list">Passengers</a></li>
-    <li role="presentation"><a href="/family/list">Families</a></li>
-    <li role="presentation"><a href="/part/list">Car Parts</a></li>
 </ul>
 <ol class="breadcrumb">
     <li>
@@ -20,18 +19,20 @@
 </ol>
 <div class="panel panel-default" id="passenger_list">
     <table class="table table-striped table-hover">
-        <caption>Passenger List</caption>
+        <caption>
+            Passenger List <br>
+            <%- req.flash('message') %>
+            <%- req.flash('error') %>
+        </caption>
         <thead>
         <tr>
             <th>Name</th>
-            <th>Family</th>
         </tr>
         </thead>
         <tbody>
         <% passengers.forEach(function(passenger){ %>
         <tr>
             <td><%- passenger.first_name + " " + passenger.last_name %></td>
-            <td><%- passenger.family %>
         </tr>
         <% }) %>
         </tbody>

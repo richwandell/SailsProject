@@ -9,6 +9,9 @@ module.exports = {
 
   attributes: {
     name: 'STRING',
+    make: 'STRING',
+    model: 'STRING',
+    year: 'date',
     passengers: {
       collection: 'Passenger',
       via: 'car'

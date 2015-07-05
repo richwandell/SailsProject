@@ -3,13 +3,13 @@
 </div>
 <ul class="nav nav-tabs">
     <li role="presentation"><a href="/car/list">Cars</a></li>
-    <li role="presentation"><a href="/part/list">Parts</a></li>
-    <li role="presentation" class="active"><a href="/passenger/list">Passengers</a></li>
+    <li role="presentation" class="active"><a href="/part/list">Parts</a></li>
+    <li role="presentation"><a href="/passenger/list">Passengers</a></li>
 </ul>
 <div class="panel panel-default" id="passenger_list">
     <table class="table table-striped table-hover">
         <caption>
-            All Passengers in All Cars <br>
+            All Parts in All Cars <br>
             <%- req.flash('message') %>
             <%- req.flash('error') %>
         </caption>
@@ -20,24 +20,24 @@
         </tr>
         </thead>
         <tbody>
-        <% passengers.forEach(function(passenger){ %>
+        <% parts.forEach(function(part){ %>
             <tr>
                 <td>
-                    <a href="/passenger/detail/<%- passenger.id %>">
-                        <%- passenger.first_name + " " + passenger.last_name %>
+                    <a href="/part/detail/<%- part.id %>">
+                        <%- part.name %>
                     </a>
                 </td>
                 <td>
-                    <% if(passenger.car){ %>
-                    <a href="/car/detail/<%- passenger.car.id %>">
-                        <%- passenger.car.name %>
+                    <% if(part.car){ %>
+                    <a href="/car/detail/<%- part.car.id %>">
+                        <%- part.car.name %>
                     </a>
                     <% } %>
                 </td>
                 <td>
-                    <form action="/passenger/deletePassenger" method="POST">
+                    <form action="/part/deletePart" method="POST">
                         <input type="hidden" name="_csrf" value="<%= _csrf %>" />
-                        <input type="hidden" name="passenger_id" value="<%- passenger.id %>"/>
+                        <input type="hidden" name="part_id" value="<%- part.id %>"/>
                         <input class="btn btn-danger" type="submit" value="Delete" />
                     </form>
                 </td>

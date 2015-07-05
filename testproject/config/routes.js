@@ -37,6 +37,7 @@ module.exports.routes = {
   },
   'GET /car/passengerList/:id': 'CarController.passengerList',
   'GET /car/partList/:id': 'CarController.partList',
+  'GET /car/detail/:id': 'CarController.detail',
   'GET /passenger/detail/:id': 'PassengerController.detail',
   /***************************************************************************
   *                                                                          *
