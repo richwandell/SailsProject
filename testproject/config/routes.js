@@ -35,7 +35,8 @@ module.exports.routes = {
   '/': {
     view: 'homepage'
   },
-  'GET /passenger/car/:id': 'PassengerController.car',
+  'GET /car/passengerList/:id': 'CarController.passengerList',
+  'GET /car/partList/:id': 'CarController.partList',
   'GET /passenger/detail/:id': 'PassengerController.detail',
   /***************************************************************************
   *                                                                          *

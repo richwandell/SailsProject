@@ -1,10 +1,3 @@
-/**
- * UserController
- *
- * @description :: Server-side logic for managing Users
- * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
- */
-
 module.exports = {
   /**
    * Action for displaying the list of passengers
@@ -24,6 +17,23 @@ module.exports = {
    * @param res
    */
   addPassenger: function(req, res){
+    var error = false;
+    if(!req.body.passenger_first_name || req.body.passenger_first_name.trim() === ''){
+      req.flash('first_name_error', 'has-error');
+      error = true;
+    }else{
+      req.flash('first_name_entry', req.body.passenger_first_name);
+    }
+    if(!req.body.passenger_last_name || req.body.passenger_last_name.trim() === ''){
+      req.flash('last_name_error', 'has-error');
+      error = true;
+    }else{
+      req.flash('last_name_entry', req.body.passenger_last_name);
+    }
+    if(error){
+      res.redirect('back');
+      return;
+    }
     Passenger.create({
       first_name: req.body.passenger_first_name,
       last_name: req.body.passenger_last_name,
@@ -31,6 +41,8 @@ module.exports = {
     }).exec(function(e, record){
       if(!e) {
         req.flash('message', 'Success! Added a passenger to this car');
+        req.flash('last_name_entry', '');
+        req.flash('first_name_entry', '');
         res.redirect('/passenger/list');
       }else{
         req.flash('error', 'Error!');
@@ -66,15 +78,5 @@ module.exports = {
       res.redirect('/passenger/list');
     }
   },
-  car: function(req, res){
-    var id = req.param("id");
-    if(id){
-      Car.find({id: id}).populate('passengers').exec(function(e, cars){
-        res.view('passenger/car', {passengers: cars[0].passengers, car: cars[0]});
-      });
-    }else{
-      req.flash('error', 'Missing car id');
-      res.redirect('/car/list');
-    }
-  }
+
 }

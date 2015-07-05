@@ -8,8 +8,13 @@
 module.exports = {
 
   attributes: {
+    name: 'STRING',
+    price: 'float',
     car:{
       model:'Car'
+    },
+    formattedPrice: function(){
+      return Number(Math.round(this.price*100)/100).toFixed(2);
     }
   }
 };
